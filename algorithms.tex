@@ -1,0 +1,39 @@
+\subsection{Q: Merge k (k = 2) arrays and sort them}
+The best way to do this would be to sort two arrays and then merge them. 
+Complexity of that algorithm is: \[O(nlogn + mlogm + (n + m))\]
+The Python code for this solution is:
+\begin{lstlisting}[language=python]
+# Function to merge array in sorted order
+def sortedMerge(a, b, res, n, m):
+    # Sorting a[] and b[]
+    a.sort()
+    b.sort()
+     
+    # Merge two sorted arrays into res[]
+    i, j, k = 0, 0, 0
+    while (i < n and j < m):
+        if (a[i] <= b[j]):
+            res[k] = a[i]
+            i += 1
+            k += 1
+        else:
+            res[k] = b[j]
+            j += 1
+            k += 1
+             
+    while (i < n):  # Merging remaining
+                    # elements of a[] (if any)
+        res[k] = a[i]
+        i += 1
+        k += 1
+         
+    while (j < m):  # Merging remaining
+                    # elements of b[] (if any)
+        res[k] = b[j]
+        j += 1
+        k += 1
+\end{lstlisting}
+\subsection{Can you explain what MapReduce is and how it works?}
+\subsection{Find the maximum of sub sequence in an integer list.}
+\subsection{Find max sum subsequence from a sequence of values.}
+\subsection{Create a function that checks if a word is a palindrome.}

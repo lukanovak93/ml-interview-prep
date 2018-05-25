@@ -1,0 +1,35 @@
+\subsection{How to measure distance between data point?}
+\subsection{Q: How to compute an inverse matrix faster by playing around with some computational tricks?}
+\bigskip
+Let's say we have a 3x3 matrix like this:
+$$M = 
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i \\
+\end{bmatrix}$$
+
+First we compute the determinant of a matrix. If the result is 0, the work is done $\rightarrow$ matrix has no inverse. 
+\bigskip
+\[ det(M) = a \cdot (e \cdot i - h \cdot f) - b \cdot (d \cdot i - g \cdot f) + c \cdot (d \cdot h - g \cdot e) \]
+
+\bigskip
+The next step is to transpose the matrix and then iterate through the matrix and at each step select one element. For that element eliminate matrix row and column where that element is located and compute determinant for the "minor" 2x2 matrix.
+
+For example: we pick element $a$ with coordinates $i=1,  j=1$. So we eliminate 1st row and 1st column and we are left with 2x2 matrix:
+\bigskip
+\[ m = 
+\begin{bmatrix}
+e & f\\
+h & i
+\end{bmatrix}
+\]
+
+\bigskip
+The determinant of that matrix is:
+\bigskip
+\[ det(m) = d \cdot i - h \cdot f \]
+
+\bigskip
+We repeat that for every element of the matrix.
+The last step is to change the sign of every 2nd element of a matrix, or mathematically, we change the sign of all elements whose sum of row and column index is odd (here we assume that row and column indices start from 1, if they start from 0 then we have to do the opposite.)

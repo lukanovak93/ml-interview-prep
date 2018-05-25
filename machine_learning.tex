@@ -1,0 +1,36 @@
+\subsection{Can you explain the fundamentals of Naive Bayes? How do you set the threshold?}
+\subsection{Can you explain SVM?}
+\subsection{How do you detect if a new observation is outlier? What is a bias-variance trade off ?}
+\subsection{Describe the working of gradient boost.}
+\subsection{How to deal with unbalanced binary classification?}
+\subsection{How do you solve the L2-regularized regression problem?}
+\subsection{Q: What are the different regularization metrics L1 and L2?}
+\textbf{L1} regularization on least squares: 
+\[\textbf{w}^* = \operatorname*{arg\,min}_{\textbf{w}} \sum_{j} {(t(\textbf{x}_j) - \sum_{i} w_i h_i(\textbf{x}_j))}^2 + \lambda \sum_{i=1}^{k} |w_i|\]
+The last part of equation that is multiplied by $\lambda$ is the L1-regularization part.
+\\\\
+\textbf{L2} regularization on least squares:
+\[\textbf{w}^* = \operatorname*{arg\,min}_{\textbf{w}} \sum_{j} {(t(\textbf{x}_j) - \sum_{i} w_i h_i(\textbf{x}_j))}^2 + \lambda \sum_{i=1}^{k} {w_i}^2\]
+The last part of equation that is multiplied by $\lambda$ is the L2-regularization part.
+
+\begin{center}
+\begin{tabular}{ | p{4cm} | p{4cm}| } 
+\hline
+\textbf{L1-regularization} & \textbf{L2-regularization} \\ 
+\hline
+Computationaly inefficient on non-sparse cases & Computationaly efficient due to having analytical solutions \\ 
+\hline
+Sparse outputs & Non-sparse outputs \\ 
+\hline
+Built-in feature selection & No feature selection \\
+\hline
+\end{tabular}
+\end{center}
+
+\bigbreak
+\textbf{Properties}:
+\begin{itemize}
+\item{\textbf{Built-in feature selection}} is frequently mentioned as a useful property of the L1-norm, which the L2-norm does not. This is actually a result of the L1-norm, which tends to produces sparse coefficients (explained below). Suppose the model have 100 coefficients but only 10 of them have non-zero coefficients, this is effectively saying that “the other 90 predictors are useless in predicting the target values”. L2-norm produces non-sparse coefficients, so does not have this property.
+\item{\textbf{Sparsity}} refers to that only very few entries in a matrix (or vector) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
+\item{\textbf{Computational efficiency.}} L1-norm does not have an analytical solution, but L2-norm does. This allows the L2-norm solutions to be calculated computationally efficiently. However, L1-norm solutions does have the sparsity properties which allows it to be used along with sparse algorithms, which makes the calculation more computationally efficient.
+\end{itemize}
